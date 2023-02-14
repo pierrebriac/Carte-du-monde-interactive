@@ -45,7 +45,7 @@ df_grouped = data.groupby(['region', 'Year'], as_index=False).mean()
 # On enregistre ce tableau en format csv
 df_grouped.to_csv('data_grouped.csv', index=False)
 
-
+"""
 # graphique du niveau de liberté dans chaque continent entre 1950 et 2021
 fig = plt.figure() # pour sauvegarder
 for region, group in df_grouped.groupby('region'):
@@ -54,40 +54,15 @@ for region, group in df_grouped.groupby('region'):
 plt.legend()
 plt.xlabel('Années')
 plt.ylabel('Libertés civiles')
-plt.show()
+
+# Si on souhaite afficher le graphique
+#plt.show()
 plt.close()
-fig.savefig('civil_liberty.png')
-
-
-fig = plt.figure()
-mean_by_region = df_grouped.groupby('region').mean()
-
-# créer un histogramme avec la moyenne totale pour chaque région
-mean_by_region['civ_libs_vdem_owid'].plot(kind='bar', x='region', 
-                                          y='civ_libs_vdem_owid', 
-                                          color = ['red', 'blue', 'green', 'yellow', 'purple', 'cyan', 'magenta'])
-
-# Ajouter une étiquette d'axe Y
-plt.ylabel('Score de libertés civiles')
-
-# Afficher le graphique
-plt.show()
-plt.close()
-fig.savefig('Liberte_mean_region.png')
-
-# Nuage de points
-mean_by_year = df_grouped.groupby('Year').mean() 
-coefficients = np.polyfit(mean_by_year.index, mean_by_year['civ_libs_vdem_owid'], 1)
-regression = np.poly1d(coefficients)
-plt.scatter(mean_by_year.index, mean_by_year['civ_libs_vdem_owid'], color='red', s=5)
-plt.plot(mean_by_year.index, regression(mean_by_year.index), color='magenta') #droite régression (x : années, y : moyenne des libertés)
-# Ajouter une étiquette d'axe Y
-plt.ylabel('Score de libertés civiles')
-plt.xlabel('Années')
-plt.show()
+fig.savefig('civil_liberty.png')"""
 
 # Graphiques interactifs
 
+"""
 plt.ion() # Activation de l'interactivité
 
 i = 0
@@ -102,23 +77,8 @@ while i < 70:
     i += 1
 
 plt.ioff() # Désactivation de l'interactivité
-plt.show()
+plt.show()"""
 
-plt.ion() # Activation de l'interactivité
-# Nuages de points interactifs
-i = 0
-while i < 70:
-    plt.scatter(mean_by_year.index[:i], mean_by_year['civ_libs_vdem_owid'][:i],
-                s=5, c='red')
-    plt.xlabel('Année')
-    plt.ylabel('Score de libertés civiles moyen')
-    plt.title('Évolution de la liberté individuelle dans le monde')
-    plt.get_current_fig_manager().full_screen_toggle()
-    plt.pause(0.05) # Pause l'affichage pour 0.05 seconde
-    plt.clf() # Efface le graphique précédent
-    i += 1
-plt.ioff() # Désactivation de l'interactivité
-plt.show()
 
 gapminder = px.data.gapminder() #charge les données de gapminder à partir de la bibliothèque plotly express
 
