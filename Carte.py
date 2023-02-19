@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 # Importer mon data frame
 # Charger le fichier CSV existant
-data = pd.read_csv("PierreBriacMétayerMariotti_données_psy3019-H23_20220211_distribution-human-rights-vdem.csv")
+data = pd.read_csv("distribution-human-rights-vdem.csv")
 
 
 # On supprime toutes les données inférieurs à 1950 (les frontières des pays sont trop instables avant)
