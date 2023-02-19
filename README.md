@@ -23,4 +23,4 @@ Contenu du code
 
 Auteur
 
-Ce code a été écrit par Pierre-Briac METAYER--MARIOTTI dans le cadre d'un projet de data science.
+Ce code a été écrit par Pierre-Briac METAYER--MARIOTTI.
